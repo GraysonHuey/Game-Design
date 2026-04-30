@@ -4,6 +4,7 @@ public class FlappyMovement : MonoBehaviour
 {
     public float jumpForce = 5f;
     private Rigidbody2D rb;
+    private int score = 0;
 
     void Start()
     {
@@ -22,5 +23,14 @@ public class FlappyMovement : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.name == "ScoreZone")
+        {
+            score++;
+            Debug.Log("Score: " + score);
+        }
     }
 }

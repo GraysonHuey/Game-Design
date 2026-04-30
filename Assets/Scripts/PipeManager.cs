@@ -5,23 +5,55 @@ using System.Linq;
 public class PipeManager : MonoBehaviour
 {
     public float speed = 5f;
+    public float spawnInterval = 2f;
+    public GameObject pipePrefab;
 
-    private List<Rigidbody2D> pipeRBs = new List<Rigidbody2D>();
+    private List<GameObject> pipes = new List<GameObject>();
+    private float spawnTimer = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        foreach (GameObject pipes in GameObject.FindGameObjectsWithTag("Pipe"))
-        {
-            pipeRBs.AddRange(pipes.GetComponentsInChildren<Rigidbody2D>());
-        }
+        pipes = GameObject.FindGameObjectsWithTag("Pipe").ToList();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        foreach (Rigidbody2D rb in pipeRBs) {
-            rb.linearVelocity = new Vector3(-speed, 0, 0);
+        for (int i = pipes.Count - 1; i >= 0; i--)
+        {
+            GameObject pipe = pipes[i];
+
+            if (pipe == null)
+            {
+                pipes.RemoveAt(i);
+                continue;
+            }
+
+            pipe.transform.Translate(Vector3.left * speed * Time.deltaTime);
+
+            if (pipe.transform.position.x < -15f)
+            {
+                pipes.RemoveAt(i);
+                Destroy(pipe);
+            }
+        }
+
+        spawnPipe();
+    }
+
+    void spawnPipe()
+    {
+        spawnTimer += Time.deltaTime;
+
+        if (spawnTimer >= spawnInterval)
+        {
+            spawnTimer = 0f;
+
+            float randomY = Random.Range(-4.5f, -0.5f);
+            Vector3 spawnPosition = new Vector3(10f, randomY, 0f);
+
+            GameObject newPipe = Instantiate(pipePrefab, spawnPosition, Quaternion.identity);
+            pipes.Add(newPipe);
         }
     }
 }
