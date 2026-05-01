@@ -25,12 +25,20 @@ public class FlappyMovement : MonoBehaviour
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.gameObject.name == "ScoreZone")
+        if (collision.gameObject.CompareTag("Score"))
         {
             score++;
             Debug.Log("Score: " + score);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Pipe") || collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("Game Over! Final Score: " + score);
         }
     }
 }
