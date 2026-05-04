@@ -50,9 +50,11 @@ public class PipeManager : MonoBehaviour
             spawnTimer = 0f;
 
             float randomY = Random.Range(-4.5f, -0.5f);
-            Vector3 spawnPosition = new Vector3(10f, randomY, 0f);
+            Vector3 spawnPosition = new Vector3(12f, randomY, 0f);
 
             GameObject newPipe = Instantiate(pipePrefab, spawnPosition, Quaternion.identity);
+            newPipe.layer = LayerMask.NameToLayer("Pipes");
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Pipes"), LayerMask.NameToLayer("Ground"), true);
             pipes.Add(newPipe);
         }
     }

@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class FlappyMovement : MonoBehaviour
+public class PlayerControls : MonoBehaviour
 {
     public float jumpForce = 5f;
     private Rigidbody2D rb;
     private int score = 0;
+    private bool canMove = true;
 
     void Start()
     {
@@ -13,7 +14,7 @@ public class FlappyMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (canMove && Input.GetKeyDown(KeyCode.Space))
         {
             Flap();
         }
@@ -39,6 +40,7 @@ public class FlappyMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Pipe") || collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("Game Over! Final Score: " + score);
+            canMove = false;
         }
     }
 }

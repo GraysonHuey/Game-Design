@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7159997372251430652}
   - component: {fileID: 4050023692599742901}
   - component: {fileID: 4334183589321565824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ScoreZone
   m_TagString: Score
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4487427124959072517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pipes
   m_TagString: Pipe
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 5530574318769548348}
   - component: {fileID: 2737282391269085354}
   - component: {fileID: 5313320653057380306}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bottom
   m_TagString: Pipe
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 5531904447923425883}
   - component: {fileID: 3505379713233691812}
   - component: {fileID: 8141006338439012895}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Top
   m_TagString: Pipe
   m_Icon: {fileID: 0}
