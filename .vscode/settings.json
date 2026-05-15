@@ -56,17 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "files.associations": {
-        "*.asset": "yaml",
-        "*.meta": "yaml",
-        "*.prefab": "yaml",
-        "*.unity": "yaml"
-    },
-    "explorer.fileNesting.enabled": true,
-    "explorer.fileNesting.patterns": {
-        "*.sln": "*.csproj",
-        "*.slnx": "*.csproj"
-    },
-    "dotnet.defaultSolution": "Game-Design.slnx",
-    "dotnet.enableWorkspaceBasedDevelopment": false
+    "dotnet.defaultSolution": "unity-flappy-bird-tutorial-main.slnx"
 }
